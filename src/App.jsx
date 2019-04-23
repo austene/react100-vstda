@@ -14,7 +14,7 @@ const mockData = [
     id: 1,
     todo: 'Pick up milk from the store',
     priority: 2,
-    editEnabled: false,
+    editEnabled: true,
     completed: false
   },
   {
