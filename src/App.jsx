@@ -30,7 +30,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: mockData
+      todos: ''
     };
     this.addTodo = this.addTodo.bind(this);
   }

@@ -11,25 +11,25 @@ class DisplayView extends Component {
     super(props);
   }
   render() {
-    // if (!this.todos.length) {
-    //   let display = <NoItems />;
-    // } else {
-    //   let display = <RowItem />;
-    // }
-    // const display = <NoItems />;
+    let display;
+    if (!this.props.todos.length) {
+      display = <NoItems />;
+    }
 
     return (
       <div className='panel panel-default'>
         <div className='panel-heading'>View Todos</div>
         <div className='panel-body'>
-          {/* <div>{display}</div> */}
-          <div>{ this.props.todos[0].todo }</div>
+          <ul className='list-group'>
+            {display}
+            {/* { this.props.todos[0].todo } */}
+          </ul>
         </div>
       </div>
     );
   }
 }
-2wsx
+
 
 // const DisplayView = ({ todos }) => {
 //   // if (!todos.length) {
