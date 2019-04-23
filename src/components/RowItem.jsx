@@ -4,6 +4,14 @@ import EditItem from './EditItem';
 class RowItem extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      todos: this.props.todo,
+      priority: this.props.priority
+    };
+    this.editTodoChange = this.editTodoChange.bind(this);
+  }
+  editTodoChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -30,9 +38,17 @@ class RowItem extends Component {
           <div className='panel'>
             <div className='panel-success'>
               <label htmlFor='update-todo-text'>Description</label>
-              <textarea name='update-todo-text' />
+              <textarea
+                name='update-todo-text'
+                value={ this.props.todo }
+                onChange={ this.editTodoChange }
+              />
               <label htmlFor='update-todo-priority'>Priority</label>
-              <select name='update-todo-priority'>
+              <select
+                name='update-todo-priority'
+                value={ this.props.priority }
+                onChange={ this.editTodoChange }
+              >
                 <option value='1'>High</option>
                 <option value='2'>Medium</option>
                 <option value='3'>Low</option>
