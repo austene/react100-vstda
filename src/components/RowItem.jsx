@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import EditItem from './EditItem';
 
 class RowItem extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
@@ -10,14 +13,12 @@ class RowItem extends Component {
           <input
             type='checkbox'
             value=''
-            id='itemDone'
+            id='todoCheckbox'
           />
         </span>
-        <span>
-          todos text
-        </span>
+        <label htmlFor='todoCheckbox'>{ this.props.todo }</label>
         <span className='pull-right'>
-          <a href={ EditItem } id='itemDone'>Edit Item</a>
+          <a href={ EditItem } id='todoEdit'>Edit Item</a>
         </span>
         <span className='pull-right'>
           Delete Item

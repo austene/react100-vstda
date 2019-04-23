@@ -11,9 +11,9 @@ class DisplayView extends Component {
     super(props);
   }
   render() {
-    let display;
+    let noItemView;
     if (!this.props.todos.length) {
-      display = <NoItems />;
+      noItemView = <NoItems />;
     }
 
     return (
@@ -21,8 +21,18 @@ class DisplayView extends Component {
         <div className='panel-heading'>View Todos</div>
         <div className='panel-body'>
           <ul className='list-group'>
-            {display}
-            {/* { this.props.todos[0].todo } */}
+            {noItemView}
+            {/* { this.props.todos[1].todo } */}
+            { this.props.todos.map(todo => (
+              <RowItem
+                key={ todo.id }
+                id={ todo.id }
+                todo={ todo.todo }
+                priority={ todo.priority }
+                editEnabled={ todo.editEnabled }
+                completed={ todo.completed }
+              />
+            ))}
           </ul>
         </div>
       </div>
