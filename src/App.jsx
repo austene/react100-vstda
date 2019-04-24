@@ -66,21 +66,20 @@ class App extends Component {
         switch (type) {
           case 'completed':
             items[i].completed = !items[i].completed;
-            this.setState({ todos: items });
             console.log(`checkbox clicked - rowitem completed status is ${items[i].completed}`);
             break;
           case 'editEnabled':
             items[i].editEnabled = !items[i].editEnabled;
-            this.setState({ todos: items });
             console.log(`editIcon clicked - row item editEnabled status is ${items[i].editEnabled}`);
             break;
           case 'delete':
             items.splice(i, 1);
-            this.setState({ todos: items });
             console.log('deleteIcon clicked - row item deleted from app todos Array');
             break;
           default:
         }
+        this.setState({ todos: items });
+        console.log('todos updated.');
       }
     }
   }
