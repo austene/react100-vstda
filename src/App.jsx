@@ -33,10 +33,12 @@ class App extends Component {
       todos: mockData
     };
     this.addTodo = this.addTodo.bind(this);
+    this.handleEventType = this.handleEventType.bind(this);
   }
   addTodo(event) {
     event.preventDefault();
     function addItem(todo, priority) {
+      console.log('add button clicked');
       // let title = this.title.value;
       // let priority = this.priority.value;
       this.setState(
@@ -47,7 +49,7 @@ class App extends Component {
               title: this.title.value,
               priority: this.priority.value,
               editEnabled: false,
-              done: false
+              completed: false
             }
           ]
         }
@@ -57,8 +59,22 @@ class App extends Component {
     updatedTodos.push(addItem);
     this.setState({ todos: updatedTodos });
   }
+  handleEventType(id) {
+    let items = this.state.todos;
+    for (let i = 0; i <items.length; i++) {
+      if (items[i].id == id) {
+        items[i].completed = !items[i].completed;
+        this.setState({ todos: items });
+        console.log(`checkbox ${items[i].completed}`);
+        break;
+      }
+    }
+  }
+
 
   render() {
+    console.log('before return');
+    console.log(this.state.todos[1].completed);
     return (
       <div className='container'>
         <div className='pageheader'>
@@ -97,7 +113,10 @@ class App extends Component {
             </div>
           </div>
           <div className='col-md-8'>
-            <DisplayView todos={ this.state.todos } />
+            <DisplayView
+              todos={ this.state.todos }
+              handleEventType={ this.handleEventType }
+            />
           </div>
         </div>
       </div>

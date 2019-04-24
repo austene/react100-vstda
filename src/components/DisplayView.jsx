@@ -22,7 +22,7 @@ class DisplayView extends Component {
         <div className='panel-body'>
           <ul className='list-group'>
             {noItemView}
-            {/* { this.props.todos[1].todo } */}
+            { console.log(this.props.todos) }
             { this.props.todos.map(todo => (
               <RowItem
                 key={ todo.id }
@@ -31,6 +31,7 @@ class DisplayView extends Component {
                 priority={ todo.priority }
                 editEnabled={ todo.editEnabled }
                 completed={ todo.completed }
+                handleEventType={ this.props.handleEventType }
               />
             ))}
           </ul>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditItem from './EditItem';
+import { isNullOrUndefined } from 'util';
 
 class RowItem extends Component {
   constructor(props) {
@@ -8,13 +9,18 @@ class RowItem extends Component {
       todos: this.props.todo,
       priority: this.props.priority
     };
-    this.editTodoChange = this.editTodoChange.bind(this);
+    this.handleEditTodo = this.handleEditTodo.bind(this);
   }
-  editTodoChange(event) {
+  handleEditTodo(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
+    let strikeThrough;
+    if (this.props.completed) {
+      strikeThrough = 'strike-through';
+    }
+    console.log('strikeThrough is ' + strikeThrough);
     return (
       <li className='list-group-item'>
         {!this.props.editEnabled ? (
@@ -22,17 +28,24 @@ class RowItem extends Component {
             <span>
               <input
                 type='checkbox'
-                value=''
                 id='todoCheckbox'
+                defaultChecked={ this.props.completed }
+                onClick={ () => this.props.handleEventType(this.props.id) }
               />
             </span>
-            <label htmlFor='todoCheckbox'>{ this.props.todo }</label>
-            <span className='pull-right'>
-              <a href={ EditItem } id='todoEdit'>Edit Item</a>
-            </span>
-            <span className='pull-right'>
-              Delete Item
-            </span>
+            <label className={ `form-check-label ${strikeThrough}` } htmlFor='todoCheckbox'>{ this.props.todo }</label>
+            <div className='pull-right'>
+              <a
+                id='todoEdit'
+                onClick={ () => this.props.handleEventType(this.props.id) }
+              ><i className='far fa-edit' />
+              </a>
+              <a
+                id='todoDelete'
+                onClick={ () => this.props.handleEventType(this.props.id) }
+              ><i className='far fa-trash-alt' />
+              </a>
+              </div>
           </div>
         ) : (
           <div className='panel'>
@@ -41,13 +54,13 @@ class RowItem extends Component {
               <textarea
                 name='update-todo-text'
                 value={ this.props.todo }
-                onChange={ this.editTodoChange }
+                onChange={ this.handleEditTodo }
               />
               <label htmlFor='update-todo-priority'>Priority</label>
               <select
                 name='update-todo-priority'
                 value={ this.props.priority }
-                onChange={ this.editTodoChange }
+                onChange={ this.handleEditTodo }
               >
                 <option value='1'>High</option>
                 <option value='2'>Medium</option>
