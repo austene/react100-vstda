@@ -34,6 +34,7 @@ class App extends Component {
     };
     this.addTodo = this.addTodo.bind(this);
     this.handleEventType = this.handleEventType.bind(this);
+    this.handleSaveEdit = this.handleSaveEdit.bind(this);
   }
   addTodo(event) {
     event.preventDefault();
@@ -60,8 +61,8 @@ class App extends Component {
     this.setState({ todos: updatedTodos });
   }
   handleEventType(type, id) {
-    let items = this.state.todos;
-    for (let i = 0; i <items.length; i++) {
+    const items = this.state.todos;
+    for (let i = 0; i < items.length; i++) {
       if (items[i].id == id) {
         switch (type) {
           case 'completed':
@@ -83,10 +84,22 @@ class App extends Component {
       }
     }
   }
-
+  handleSaveEdit(id, todo, priority) {
+    const items = this.state.todos;
+    for (let i = 0; i< items.length; i++) {
+      if (items[i].id == id) {
+        items[i].todo == todo;
+        items[i].priority == priority;
+        items[i].editEnabled == !items[i].editEnabled;
+      }
+    }
+    this.setState({ todos: items });
+    console.log(`EditSave clicked and item id 1 is ${items[1].todo}`);
+    console.log(`item: ${items[1].id} is now todo: ${items[1].todo} and priority: ${items[1].priority}`);
+  }
 
   render() {
-    console.log('before return');
+    // console.log('before return');
     return (
       <div className='container'>
         <div className='pageheader'>
@@ -128,6 +141,7 @@ class App extends Component {
             <DisplayView
               todos={ this.state.todos }
               handleEventType={ this.handleEventType }
+              handleSaveEdit={ this.handleSaveEdit }
             />
           </div>
         </div>

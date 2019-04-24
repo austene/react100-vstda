@@ -32,6 +32,7 @@ class DisplayView extends Component {
                 editEnabled={ todo.editEnabled }
                 completed={ todo.completed }
                 handleEventType={ this.props.handleEventType }
+                handleSaveEdit={ this.props.handleSaveEdit }
               />
             ))}
           </ul>

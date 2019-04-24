@@ -12,8 +12,11 @@ class RowItem extends Component {
   }
   handleEditTodo(event) {
     this.setState({ [event.target.name]: event.target.value });
+    console.log([event.target.name]);
     console.log(this.state.todo);
+    console.log(this.state.priority);
   }
+
 
   render() {
     let strikeThrough;
@@ -36,12 +39,12 @@ class RowItem extends Component {
             <label className={ `form-check-label ${strikeThrough}` } htmlFor='todoCheckbox'>{ this.props.todo }</label>
             <div className='pull-right'>
               <a
-                id='todoEdit'
+                id='todoEditIcon'
                 onClick={ () => this.props.handleEventType('editEnabled', this.props.id) }
               ><i className='far fa-edit' />
               </a>
               <a
-                id='todoDelete'
+                id='todoDeleteIcon'
                 onClick={ () => this.props.handleEventType('delete', this.props.id) }
               ><i className='far fa-trash-alt' />
               </a>
@@ -54,21 +57,34 @@ class RowItem extends Component {
               <label htmlFor='update-todo-text'>Description</label>
               <textarea
                 // type='text'
-                name='update-todo-text'
-                value={ this.state.todo }
+                className='update-todo-text'
+                id='todo'
+                name='todo'
+                defaultValue={ this.state.todo }
                 onChange={ this.handleEditTodo }
               />
               <label htmlFor='update-todo-priority'>Priority</label>
               <select
-                name='update-todo-priority'
-                value={ this.state.priority }
+                className='update-todo-priority'
+                id='priority'
+                name='priority'
+                defaultValue={ this.state.priority }
                 onChange={ this.handleEditTodo }
               >
                 <option value='1'>High</option>
                 <option value='2'>Medium</option>
                 <option value='3'>Low</option>
               </select>
-              <button className='update-todo btn btn-success pull-right'>Save</button>
+              <button
+                className='update-todo btn btn-success pull-right'
+                onClick={ () => this.props.handleSaveEdit (
+                  this.props.id,
+                  this.state.todo,
+                  this.state.priority
+                  )
+                }
+              >Save
+              </button>
             </div>
           </div>
         )}
