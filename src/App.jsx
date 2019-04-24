@@ -59,14 +59,28 @@ class App extends Component {
     updatedTodos.push(addItem);
     this.setState({ todos: updatedTodos });
   }
-  handleEventType(id) {
+  handleEventType(type, id) {
     let items = this.state.todos;
     for (let i = 0; i <items.length; i++) {
       if (items[i].id == id) {
-        items[i].completed = !items[i].completed;
-        this.setState({ todos: items });
-        console.log(`checkbox ${items[i].completed}`);
-        break;
+        switch (type) {
+          case 'completed':
+            items[i].completed = !items[i].completed;
+            this.setState({ todos: items });
+            console.log(`checkbox clicked - rowitem completed status is ${items[i].completed}`);
+            break;
+          case 'editEnabled':
+            items[i].editEnabled = !items[i].editEnabled;
+            this.setState({ todos: items });
+            console.log(`editIcon clicked - row item editEnabled status is ${items[i].editEnabled}`);
+            break;
+          case 'delete':
+            items.splice(i, 1);
+            this.setState({ todos: items });
+            console.log('deleteIcon clicked - row item deleted from app todos Array');
+            break;
+          default:
+        }
       }
     }
   }
@@ -74,7 +88,6 @@ class App extends Component {
 
   render() {
     console.log('before return');
-    console.log(this.state.todos[1].completed);
     return (
       <div className='container'>
         <div className='pageheader'>
