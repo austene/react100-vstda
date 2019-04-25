@@ -22,7 +22,7 @@ class DisplayView extends Component {
         <div className='panel-body'>
           <ul className='list-group'>
             {noItemView}
-            { console.log(this.props.todos) }
+            { console.log(`hello from DisplayView render ${this.props.todo}`) }
             { this.props.todos.map(todo => (
               <RowItem
                 key={ todo.id }

@@ -1,31 +1,5 @@
 import React, { Component } from 'react';
 
-// const mockData = [
-//   {
-//     id: 0,
-//     todo: 'Take out the trash',
-//     priority: 1,
-//     editEnabled: false,
-//     completed: true
-//   },
-//   {
-//     id: 1,
-//     todo: 'Pick up milk from the store',
-//     priority: 2,
-//     editEnabled: false,
-//     completed: false
-//   },
-//   {
-//     id: 2,
-//     todo: 'Pick up kids from school',
-//     priority: 3,
-//     editEnabled: false,
-//     completed: false
-//   }
-// ];
-
- let id = 0;
-
 class InputForm extends Component {
 
   // render() {

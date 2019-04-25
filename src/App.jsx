@@ -14,7 +14,7 @@ const mockData = [
     id: 1,
     todo: 'Pick up milk from the store',
     priority: 2,
-    editEnabled: true,
+    editEnabled: false,
     completed: false
   },
   {
@@ -26,6 +26,8 @@ const mockData = [
   }
 ];
 
+// let id = todos.length;
+let id = 3;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,29 +38,52 @@ class App extends Component {
     this.handleEventType = this.handleEventType.bind(this);
     this.handleSaveEdit = this.handleSaveEdit.bind(this);
   }
-  addTodo(event) {
+  addTodo(todo, priority) {
     event.preventDefault();
-    function addItem(todo, priority) {
-      console.log('add button clicked');
-      // let title = this.title.value;
-      // let priority = this.priority.value;
-      this.setState(
-        {
-          todos: [
-            {
-              id: id++,
-              title: this.title.value,
-              priority: this.priority.value,
-              editEnabled: false,
-              completed: false
-            }
-          ]
-        }
-      );
-    }
-    const updatedTodos = this.state.todos.slice();
-    updatedTodos.push(addItem);
-    this.setState({ todos: updatedTodos });
+    const items = this.state.todos;
+    // const id = items.length;
+    const todo = todo.value;
+    const priority = priority.value;
+    console.log(`id equals ${id}`);
+    const todoToAdd = { todos: [{
+      // key: id,
+      id,
+      todo,
+      priority,
+      editEnabled: false,
+      completed: false
+    }] };
+    items.push(todoToAdd);
+    this.setState({ todos: items });
+    console.log(`addTodo method ${this.state.todos.legnth}`);
+    id++;
+    console.log(`next id will equal ${id}`);
+    // event.preventDefault();
+    // function addItem() {
+    //   let id = this.state.todos.length;
+    //   let items = this.state.todos;
+    //   console.log('Add button clicked');
+    //   console.log(id);
+    //   console.log(items);
+    //   // let title = this.title.value;
+    //   // let priority = this.priority.value;
+    //   this.setState(
+    //     {
+    //       todos: [
+    //         {
+    //           id: id++,
+    //           todo: this.todo.value,
+    //           priority: this.priority.value,
+    //           editEnabled: false,
+    //           completed: false
+    //         }
+    //       ]
+    //     }
+    //   );
+    // }
+    // const updatedTodos = this.state.todos.slice();
+    // updatedTodos.push(addItem);
+    // this.setState({ todos: updatedTodos });
   }
   handleEventType(type, id) {
     const items = this.state.todos;
@@ -86,16 +111,17 @@ class App extends Component {
   }
   handleSaveEdit(id, todo, priority) {
     const items = this.state.todos;
-    for (let i = 0; i< items.length; i++) {
+    for (let i = 0; i < items.length; i++) {
       if (items[i].id == id) {
-        items[i].todo == todo;
-        items[i].priority == priority;
-        items[i].editEnabled == !items[i].editEnabled;
+        console.log('inside the SaveEdit if statement');
+        items[i].todo = todo;
+        items[i].priority = priority;
+        items[i].editEnabled = !items[i].editEnabled;
       }
     }
     this.setState({ todos: items });
-    console.log(`EditSave clicked and item id 1 is ${items[1].todo}`);
-    console.log(`item: ${items[1].id} is now todo: ${items[1].todo} and priority: ${items[1].priority}`);
+    console.log(`EditSave clicked and item 1: ${items[1].id} is now todo: ${items[1].todo} and priority: ${items[1].priority}`);
+    console.log(`editEnabled status is ${items[1].editEnabled}`);
   }
 
   render() {
@@ -114,12 +140,22 @@ class App extends Component {
               <div className='panel-heading'>Add New Todo</div>
               <div className='panel-body'>
                 <div>
-                  <label className='create-todo-text' htmlFor='title'>I want to...</label>
-                  <textarea name='title' id='title' placeholder='Add a new Todo item' />
+                  <label className='create-todo-text' htmlFor='todo'>I want to...</label>
+                  <textarea
+                    name='title'
+                    id='todo'
+                    placeholder='Add a new Todo item'
+                    value=''
+                  />
                 </div>
                 <div>
                   <label className='create-todo-priority' htmlFor='priority'>How much of a priority is this?</label>
-                  <select name='priority' id='priority' placeholder='Select a Priority'>
+                  <select
+                    name='priority'
+                    id='priority'
+                    placeholder='Select a Priority'
+                    value=''
+                  >
                     <option value='1'>High</option>
                     <option value='2'>Medium</option>
                     <option value='3'>Low</option>
