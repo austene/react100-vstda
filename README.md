@@ -20,7 +20,7 @@ $ npm install
 ```
 $ npm start
 ```
-(npm run build and npm start combined in package.json with `npm start`.)
+(npm run build and npm start combined in package.json with command `npm start`.)
 
 ## Now
 Deployed to NOW through URL
