@@ -24,4 +24,4 @@ $ npm start
 
 ## Now
 Deployed to NOW through URL
->
+>https://react100-vstda-pe8xdmt3i.now.sh
