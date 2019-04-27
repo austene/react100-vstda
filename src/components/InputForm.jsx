@@ -9,9 +9,9 @@ class InputForm extends Component {
     };
     this.handleOnChangeAddTodo = this.handleOnChangeAddTodo.bind(this);
   }
+
   handleOnChangeAddTodo(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log([event.target.name]);
   }
 
   render() {
@@ -31,7 +31,7 @@ class InputForm extends Component {
             />
           </div>
           <div>
-           <label className='create-todo-priority' htmlFor='priority'>How much of a priority is this?</label>
+            <label className='create-todo-priority' htmlFor='priority'>How much of a priority is this?</label>
             <select
               className='create-todo-priority'
               id='priority'
@@ -48,8 +48,6 @@ class InputForm extends Component {
           </div>
           <button
             className='create-todo btn btn-success btn-large btn-block'
-            // type='button'
-            // name='addTodo'
             onClick={ () => this.props.addTodo (
               this.state.todo,
               this.state.priority

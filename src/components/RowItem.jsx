@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EditItem from './EditItem';
 
 class RowItem extends Component {
   constructor(props) {
@@ -10,6 +9,7 @@ class RowItem extends Component {
     };
     this.handleEditTodo = this.handleEditTodo.bind(this);
   }
+
   handleEditTodo(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -61,7 +61,6 @@ class RowItem extends Component {
         ) : (
           // EditView
           <div className='panel'>
-          { console.log('EditItem view rendered')}
             <div className='panel-success'>
               <label htmlFor='update-todo-text'>Description</label>
               <textarea

@@ -1,9 +1,6 @@
-// import React from 'react';
 import React, { Component } from 'react';
 import NoItems from './NoItems';
 import RowItem from './RowItem';
-import EditItem from './EditItem';
-
 
 class DisplayView extends Component {
   constructor(props) {
@@ -21,7 +18,6 @@ class DisplayView extends Component {
         <div className='panel-body'>
           <ul className='list-group'>
             {noItemView}
-            { console.log('DisplayView rendered') }
             { this.props.todos.map(todo => (
               <RowItem
                 key={ todo.id }
@@ -40,44 +36,5 @@ class DisplayView extends Component {
     );
   }
 }
-
-
-// const DisplayView = ({ todos }) => {
-//   // if (!todos.length) {
-//   return (
-//     <NoItems />
-//   );
-// };
-
-
-  // function DisplayView({ text, state }) {
-  //   return (
-  //     <div>
-  //       {(function() {
-  //         switch (state) {
-  //           case '1st option':
-  //             return <NoItems text={ text } />;
-  //           case '2nd option':
-  //             return <RowItem />;
-  //           case '3rd option':
-  //             return <EditItem />;
-  //           default:
-  //             return null;
-  //         }
-  //       })()}
-  //     </div>
-  //   );
-  // }
-
-  // const DisplayView = () => (
-  //   <div className='panel panel-default'>
-  //     <div className='panel-heading'>View Todos</div>
-  //     <div className='panel-body'>
-  //       <NoItems />
-  //       <RowItem />
-  //       <EditItem />
-  //     </div>
-  //   </div>
-  // );
 
 export default DisplayView;
