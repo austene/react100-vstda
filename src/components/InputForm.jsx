@@ -5,7 +5,7 @@ class InputForm extends Component {
     super(props);
     this.state = {
       todo: '',
-      priority: 'Select',
+      priority: 'select',
     };
     this.handleOnChangeAddTodo = this.handleOnChangeAddTodo.bind(this);
   }
@@ -40,9 +40,10 @@ class InputForm extends Component {
               defaultValue={ this.state.priority }
               onChange={ this.handleOnChangeAddTodo }
             >
-              <option value='1'>High</option>
+              <option value='select'>Select</option>
+              <option value='3'>High</option>
               <option value='2'>Medium</option>
-              <option value='3'>Low</option>
+              <option value='1'>Low</option>
             </select>
           </div>
           <button

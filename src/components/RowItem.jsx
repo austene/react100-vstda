@@ -23,11 +23,11 @@ class RowItem extends Component {
 
     let priorityHighlight;
     if (this.props.priority === '1') {
-      priorityHighlight = 'list-group-item-danger';
+      priorityHighlight = 'list-group-item-success';
     } else if (this.props.priority === '2') {
       priorityHighlight = 'list-group-item-warning';
     } else if (this.props.priority === '3') {
-      priorityHighlight = 'list-group-item-success';
+      priorityHighlight = 'list-group-item-danger';
     }
 
     return (
