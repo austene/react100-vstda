@@ -12,9 +12,6 @@ class RowItem extends Component {
   }
   handleEditTodo(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log([event.target.name], this.state.target.value);
-    // console.log(this.state.todo);
-    // console.log(this.state.priority);
   }
 
 
@@ -23,8 +20,18 @@ class RowItem extends Component {
     if (this.props.completed) {
       strikeThrough = 'strike-through';
     }
+
+    let priorityHighlight;
+    if (this.props.priority === '1') {
+      priorityHighlight = 'list-group-item-danger';
+    } else if (this.props.priority === '2') {
+      priorityHighlight = 'list-group-item-warning';
+    } else if (this.props.priority === '3') {
+      priorityHighlight = 'list-group-item-success';
+    }
+
     return (
-      <li className='list-group-item'>
+      <li className={ `list-group-item ${priorityHighlight}` }>
         {!this.props.editEnabled ? (
           <div>
             <span>
@@ -52,7 +59,7 @@ class RowItem extends Component {
         ) : (
           // EditView
           <div className='panel'>
-            { console.log('EditItem view rendered')}
+          { console.log('EditItem view rendered')}
             <div className='panel-success'>
               <label htmlFor='update-todo-text'>Description</label>
               <textarea

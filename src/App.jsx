@@ -41,9 +41,6 @@ class App extends Component {
   addTodo(addTodo, addPriority) {
     event.preventDefault();
     const items = this.state.todos;
-    // const id = items.length;
-    // const todo = todo.value;
-    // const priority = priority.value;
     console.log(`id equals ${id}`);
     const todoToAdd = {
       id: id,
