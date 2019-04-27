@@ -3,8 +3,8 @@
 ## Purpose of Program
 Creates a very simple ToDo app with REACT.
 
--adds todo Item
--adds priority for todo Item
+- adds todo Item
+- adds priority for todo Item
 ## Setup
 
 ### Clone
