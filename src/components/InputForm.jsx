@@ -18,11 +18,11 @@ class InputForm extends Component {
     return (
       <div className='panel panel-default'>
         <div className='panel-heading'>Add New Todo</div>
-        <div className='panel-body'>
+        <div className='create-todo panel-body'>
           <div>
             <label className='create-todo-text' htmlFor='todo'>I want to...</label>
             <textarea
-              className='add-todo-text'
+              className='create-todo-text'
               id='todo'
               name='todo'
               placeholder='Add a new Todo item'
@@ -33,7 +33,7 @@ class InputForm extends Component {
           <div>
            <label className='create-todo-priority' htmlFor='priority'>How much of a priority is this?</label>
             <select
-              className='add-todo-priority'
+              className='create-todo-priority'
               id='priority'
               name='priority'
               placeholder='Select a Priority'
@@ -45,10 +45,8 @@ class InputForm extends Component {
               <option value='3'>Low</option>
             </select>
           </div>
-        </div>
-        <div className='panel-footer'>
           <button
-            className='btn btn-success btn-large btn-block'
+            className='create-todo btn btn-success btn-large btn-block'
             // type='button'
             // name='addTodo'
             onClick={ () => this.props.addTodo (

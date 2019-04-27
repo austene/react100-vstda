@@ -45,11 +45,13 @@ class RowItem extends Component {
             <label className={ `form-check-label ${strikeThrough}` } htmlFor='todoCheckbox'>{ this.props.todo }</label>
             <div className='pull-right'>
               <a
+                className='edit-todo'
                 id='todoEditIcon'
                 onClick={ () => this.props.handleEventType('editEnabled', this.props.id) }
               ><i className='far fa-edit' />
               </a>
               <a
+                className='delete-todo'
                 id='todoDeleteIcon'
                 onClick={ () => this.props.handleEventType('delete', this.props.id) }
               ><i className='far fa-trash-alt' />
@@ -63,7 +65,6 @@ class RowItem extends Component {
             <div className='panel-success'>
               <label htmlFor='update-todo-text'>Description</label>
               <textarea
-                // type='text'
                 className='update-todo-text'
                 id='todo'
                 name='todo'
