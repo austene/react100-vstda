@@ -26,65 +26,39 @@ const mockData = [
   }
 ];
 
-// let id = todos.length;
 let id = 3;
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: mockData
+      todos: []
     };
     this.addTodo = this.addTodo.bind(this);
     this.handleEventType = this.handleEventType.bind(this);
     this.handleSaveEdit = this.handleSaveEdit.bind(this);
   }
-  addTodo(todo, priority) {
+
+  addTodo(addTodo, addPriority) {
     event.preventDefault();
     const items = this.state.todos;
     // const id = items.length;
-    const todo = todo.value;
-    const priority = priority.value;
+    // const todo = todo.value;
+    // const priority = priority.value;
     console.log(`id equals ${id}`);
-    const todoToAdd = { todos: [{
-      // key: id,
-      id,
-      todo,
-      priority,
+    const todoToAdd = {
+      id: id,
+      todo: addTodo,
+      priority: addPriority,
       editEnabled: false,
       completed: false
-    }] };
+    };
     items.push(todoToAdd);
     this.setState({ todos: items });
-    console.log(`addTodo method ${this.state.todos.legnth}`);
     id++;
     console.log(`next id will equal ${id}`);
-    // event.preventDefault();
-    // function addItem() {
-    //   let id = this.state.todos.length;
-    //   let items = this.state.todos;
-    //   console.log('Add button clicked');
-    //   console.log(id);
-    //   console.log(items);
-    //   // let title = this.title.value;
-    //   // let priority = this.priority.value;
-    //   this.setState(
-    //     {
-    //       todos: [
-    //         {
-    //           id: id++,
-    //           todo: this.todo.value,
-    //           priority: this.priority.value,
-    //           editEnabled: false,
-    //           completed: false
-    //         }
-    //       ]
-    //     }
-    //   );
-    // }
-    // const updatedTodos = this.state.todos.slice();
-    // updatedTodos.push(addItem);
-    // this.setState({ todos: updatedTodos });
+    console.log(`addTodo method ${this.state.todos[id].todo}`);
   }
+
   handleEventType(type, id) {
     const items = this.state.todos;
     for (let i = 0; i < items.length; i++) {
@@ -135,8 +109,12 @@ class App extends Component {
         </div>
         <div className='row'>
           <div className='col-md-4'>
-            <div className='panel panel-default'>
+            <InputForm 
+              todos={ this.state.todos }
+              addTodo={ this.addTodo }
+            />
               {/* Input Form */}
+            {/* <div className='panel panel-default'>
               <div className='panel-heading'>Add New Todo</div>
               <div className='panel-body'>
                 <div>
@@ -171,7 +149,7 @@ class App extends Component {
                 >ADD
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className='col-md-8'>
             <DisplayView

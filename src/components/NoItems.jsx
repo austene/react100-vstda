@@ -7,5 +7,6 @@ const NoItems = () => (
     Get started now by adding a new Todo item on the left.
   </li>
 );
+console.log('NoItems view rendered');
 
 export default NoItems;

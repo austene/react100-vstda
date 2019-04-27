@@ -12,9 +12,9 @@ class RowItem extends Component {
   }
   handleEditTodo(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log([event.target.name]);
-    console.log(this.state.todo);
-    console.log(this.state.priority);
+    console.log([event.target.name], this.state.target.value);
+    // console.log(this.state.todo);
+    // console.log(this.state.priority);
   }
 
 
@@ -23,7 +23,6 @@ class RowItem extends Component {
     if (this.props.completed) {
       strikeThrough = 'strike-through';
     }
-    // console.log('strikeThrough is ' + strikeThrough);
     return (
       <li className='list-group-item'>
         {!this.props.editEnabled ? (
@@ -53,6 +52,7 @@ class RowItem extends Component {
         ) : (
           // EditView
           <div className='panel'>
+            { console.log('EditItem view rendered')}
             <div className='panel-success'>
               <label htmlFor='update-todo-text'>Description</label>
               <textarea

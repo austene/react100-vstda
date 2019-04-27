@@ -1,7 +1,6 @@
 // import React from 'react';
 import React, { Component } from 'react';
 import NoItems from './NoItems';
-// import RowList from './RowList';
 import RowItem from './RowItem';
 import EditItem from './EditItem';
 
@@ -22,7 +21,7 @@ class DisplayView extends Component {
         <div className='panel-body'>
           <ul className='list-group'>
             {noItemView}
-            { console.log(`hello from DisplayView render ${this.props.todo}`) }
+            { console.log('DisplayView rendered') }
             { this.props.todos.map(todo => (
               <RowItem
                 key={ todo.id }
